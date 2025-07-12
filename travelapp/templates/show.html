@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "show.css" %}">
+    <title>Passenger Information</title>
+</head>
+<body>
+
+    <h1>Passenger List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Passport ID</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in passengerobj %}
+            <tr>
+                <td>{{i.firstname}} {{i.lastname}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.passport_id}}</td>
+                <td>
+                    <div class="action-btn">
+                    <a href="{% url "Edit" i.id %}"><button>Edit</button></a>
+                    <a href="{% url "DeletePassenger" i.id %}"><button>Delete</button></a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="process-btn">
+    <form action="{% url 'PassengerInfo' %}" method="post">
+        {% csrf_token %} 
+        <input type="hidden" name="package_id" value={{package_id}}>
+        <input type="hidden" name="book_id" value={{bookingobj.id}}>
+        <input type="submit" name="Add Passenger" value="Add Passenger">
+    </form>
+    
+        <form action="{% url 'Proceed' %}" method="post">
+            {% csrf_token %} 
+            <input type="hidden" name="package_id" value={{package_id}}>
+            <input type="hidden" name="book_id" value={{bookingobj.id}}>
+            <input type="submit" name="Proceed" value="Proceed">
+        </form>
+    </div>
+    <div class="book-data">
+        <p><strong>Passengers: </strong>{{bookingobj.passengers}} </p>
+        <p><strong>Total Amount: </strong>{{bookingobj.totalprice}} </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+.packages {
+    position: relative;
+    top: 0px;
+}
+
+.packages h1 {
+    text-align: center;
+    margin: 10px 5px 5px;
+    border: 2px solid rgb(250, 3, 3);
+    border-radius: 12px;
+    padding: 10px;
+    font-weight: 700;
+    background: black;
+    color: white;
+}
+
+.packages .Container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 10px 20px;
+}
+
+.packages .Container .box {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
+    background: #0000001e;
+
+}
+
+.packages .Container .box .image {
+    height: 400px;
+    width: 100%;
+    padding: 15px;
+    position: relative;
+}
+
+.packages .Container .box .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.packages .Container .box .image h3 {
+    position: absolute;
+    top: 390px;
+    padding: 5px 0px;
+}
+
+.packages .Container .box .description {
+    padding: 25px 15px;
+    text-align: justify;
+}
+
+.packages .Container .box .description .price {
+    font-weight: 600;   
+}
+
+.packages .Container .box .description .price span {
+    font-weight: 600;
+    font-size: small;
+    text-decoration: line-through red 2px;
+    padding-left: 135px;
+}
+
+.packages .Container .box .description p{
+    padding: 10px 0px;
+}
+
+.packages .Container .box .description .btnBook{
+    width: 100%;
+    padding: 10px;
+    font-size: medium;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-weight: 600;
+}
+
+.packages .Container .box .description .btnBook:hover{
+    background: #ffd800;
+    cursor: pointer;
+}

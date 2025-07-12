@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Information Form</title>
+    <link rel="stylesheet" href="{%static 'kyp.css'%}">
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="text-align: center;">Passenger Information</h2>
+        <form action="{% url 'Update' passengerobj.id %}" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <label for="firstname">First Name:</label>
+                <input type="text" value={{passengerobj.firstname}} name="firstname" required>
+            </div>
+            <div class="row">
+                <label for="lastname">Last Name:</label>
+                <input type="text" value={{passengerobj.lastname}} name="lastname" required>
+            </div>
+            <div class="row">
+                <label for="age">Age:</label>
+                <input type="number" value={{passengerobj.age}} name="age" required>
+            </div>
+            <div class="row">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="passport">Passport ID:</label>
+                <input type="text" value={{passengerobj.passport_id}} name="passport" required>
+            </div>
+            <div class="row">
+                <label for="address">Address:</label>
+                <input type="text" value={{passengerobj.address}} name="address" required>
+            </div>
+            <div class="row">
+                <label for="country">Country:</label>
+                <input type="text" value={{passengerobj.country}} name="country" required>
+            </div>
+            <div class="row">
+                <label for="state">State:</label>
+                <input type="text" value={{passengerobj.state}} name="state" required>
+            </div>
+            <div class="row">
+                <label for="pincode">Pincode:</label>
+                <input type="text" value={{passengerobj.pincode}} name="pincode" required>
+            </div>
+            <div class="row">
+                <label for="dateofjourney">Date of Journey:</label>
+                <input type="date" value={{passengerobj.journey_date}} name="dateofjourney" required>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

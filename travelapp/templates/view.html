@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "show.css" %}">
+    <title>Passenger Inforamation</title>
+</head>
+{% block mycontent%}
+    <h1>Passengers</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Passenger Id</th>
+                <th>Passenger Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Passport Id</th>
+                <th>Commencement Date </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in passengerobj %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.firstname}} {{i.lastname}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.passport_id}}</td>
+                <td>{{i.journey_date}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="process-btn">
+        <a href="{% url "ListPackage" %}"><button>Go Back To Home Page</button></a>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{page_title}}</title>
+    <link rel="stylesheet" href="{%static 'menu.css'%}">
+    <link rel="stylesheet" href="{%static 'index.css'%}">
+    <link rel="stylesheet" href="{%static 'package.css'%}">
+    <link rel="stylesheet" href="{%static 'details.css'%}">
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      {% if sessionvalue %}
+        <a href="{% url 'ListPackage' %}">Travel<span>EZ</span></a>
+      {% else %}
+      <a href="{% url 'IndexPage' %}">Travel<span>EZ</span></a>
+      {% endif %}
+    </div>
+    
+    <div class="search-bar">
+      <form action="{% url 'Search' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="search_query" placeholder="Search...">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    {% if sessionvalue%}
+    <div class="profile-dropdown">
+      <label style="color: white;"> Welcome, {{clientobj.first_name}} {{clientobj.last_name}}</label><a href="#" class="profile-btn">&#9662;</a>
+      <div class="dropdown-content">
+        <a href="{% url "Bookings" %}">Bookings</a>
+        <a href="{% url "LogOut" %}">Logout</a>
+      </div>
+    </div>
+    {% else %}
+    <div class="lgn-btn">
+    <a href="{% url "LogIn" %}"><button>Login</button></a>
+    <a href="{% url "SignUp" %}"><button>Signup</button></a>
+    </div>
+    {% endif %}
+  </nav>
+  {% block mycontent%}
+    {% endblock %}
+</body>
+</html>

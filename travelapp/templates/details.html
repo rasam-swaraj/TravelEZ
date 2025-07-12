@@ -1,0 +1,36 @@
+{% include "navbar.html" with page_title="Package Details" %}  
+{% load static %}
+{% block mycontent%}
+<div class="center-container">
+    <div class="container">
+        <div class="product-image">
+            <img src="{{packageobj.image.url}}" alt="{{packageobj.location}}">
+        </div>
+        <div class="product-details">
+            <div class="product-title">{{packageobj.package_name}}</div>
+            <div class="product-info">
+                <p><strong>Country:</strong>{{packageobj.country}}</p><br>
+                <p><strong>Location:</strong> {{packageobj.location}}</p><br>
+                <p><strong>Days:</strong> {{packageobj.days}}</p><br>
+            </div>
+            <div class="product-description">
+                {{packageobj.description}}
+            </div>
+            <div class="product-price">INR {{packageobj.price}}</div>
+            {%if sessionvalue%}
+            <form class="action" method='post' action="{% url "PassengerInfo" %}">
+            {% csrf_token %}
+            <input type="hidden" name="session" value={{sessionvalue}}>
+            <input type="hidden" name="package_id" value={{packageobj.id}}> 
+            <input type="hidden" name="book_id" value=0> 
+            <button class="product-button" type="submit">Book Now</button>
+            </form>
+            {% else%}
+            <a href= "{% url "LogIn" %}"><button class="product-button" type="submit">Book Now</button></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

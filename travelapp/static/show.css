@@ -1,0 +1,56 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #1e3799;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: large;
+}
+
+th {
+    background-color: #1e3799;
+    color: #fff;
+}
+
+.process-btn {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.action-btn button, .process-btn form input[type="submit"], .process-btn button {
+    background-color: #ffd800;
+    padding: 5px;
+    color: #000; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right:10px;
+    font-size: medium;
+    font-weight: 500;
+    
+}
+
+.book-data p{
+    font-size: large;
+}

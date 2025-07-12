@@ -1,0 +1,61 @@
+{% include "navbar.html" with page_title="TravelEZ" %}  
+<html>
+<head></head>
+{% block mycontent%}
+<main>
+    <section class="banner">
+        <div class="bg">
+            <img src="static/bg_img.jpg" alt="bg_img" class="bgimg">
+            <div class="content">
+                <h2>Explore your dream destinations with us.</h2>
+            </div>
+        </div>
+    </section>
+    <section class="packages">
+        <h1>Domestic Destinations</h1>
+        <div class="Container">
+            {% for i in domestic %}
+            <div class="box">
+                <div class="image">
+                    <img src={{i.image.url}} alt="..">
+                    <h3>{{i.package_name}}</h3>
+                </div>
+                <div class="description">
+                    <div class="price">INR {{i.price}}</div>
+                    <p>{{i.description}}</p>
+                    {% if sessionvalue %}
+                    <a href="{% url "ViewPackage" i.slug %}"><button class="btnBook">View Details</button></a> 
+                    {% else %}
+                    <a href="{% url "Details" i.slug %}"><button class="btnBook">View Details</button></a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="packages">
+        <h1>International Destinations</h1>
+        <div class="Container">
+            {% for i in international %}
+            <div class="box">
+                <div class="image">
+                    <img src={{i.image.url}} alt="..">
+                    <h3>{{i.package_name}}</h3>
+                </div>
+                <div class="description">
+                    <div class="price">INR {{i.price}}</div>
+                    <p>{{i.description}}</p>
+                    {% if sessionvalue %}
+                    <a href="{% url "ViewPackage" i.slug %}"><button class="btnBook">View Details</button></a> 
+                    {% else %}
+                    <a href="{% url "Details" i.slug %}"><button class="btnBook">View Details</button></a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}
+</body>
+</html>
